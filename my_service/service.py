@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Hello world package"""
 from flask import Flask
-from .hellos import hellos_bp
+from .hellos import bp as hellos_bp
 
 VERSION = "v1"
 SERVICE_NAME = "service"

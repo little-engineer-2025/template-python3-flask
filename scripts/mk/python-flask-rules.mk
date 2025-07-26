@@ -2,7 +2,10 @@
 MODULE ?= my_service
 
 .PHONY: all
-all: format lint doc test
+all:
+	$(MAKE) format
+	$(MAKE) lint doc test
+	$(MAKE) test-cov
 
 .PHONY: deps
 deps: .venv  ## Install dependencies in a python virtual environment
