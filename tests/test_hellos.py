@@ -11,7 +11,7 @@ class _:
 
 
 def test_get_hellos(capsys):
-    srv = service.hellos()
+    srv = service.Hellos()
     try:
         srv.get_hellos(_.TEST_NAME)
     except werkzeug.exceptions.NotFound as eNotFound:
@@ -25,7 +25,7 @@ def test_get_hellos(capsys):
 
 
 def test_post_hellos(capsys):
-    srv = service.hellos()
+    srv = service.Hellos()
     srv.post_hellos(_.TEST_NAME)
     try:
         srv.post_hellos(_.TEST_NAME)
@@ -34,7 +34,7 @@ def test_post_hellos(capsys):
 
 
 def test_delete_hellos():
-    srv = service.hellos()
+    srv = service.Hellos()
     try:
         srv.delete_hellos(_.TEST_NAME)
     except werkzeug.exceptions.NotFound:
@@ -50,7 +50,7 @@ def test_delete_hellos():
 
 
 def test_list_hellos():
-    srv = service.hellos()
+    srv = service.Hellos()
     srv.list_hellos()
 
     srv.post_hellos(_.TEST_NAME)
