@@ -1,0 +1,48 @@
+# Ignore by default to avoid no wished files
+**/*
+
+# Add base directory files
+!LICENSE
+!README.md
+!Makefile
+!.gitignore
+!.dockerignore
+!pyproject.toml
+.venv
+.env
+.envrc
+
+# Add source code
+# TODO Update according to your module name
+!/my_service
+!/my_service/**
+!/my_service/**/*
+
+# Add tests
+!/tests
+!/tests/**
+!/tests/**/*
+
+# Add docs
+!/docs
+!/docs/**
+!/docs/**/*
+
+# Add scripts
+!/scripts
+!/scripts/**
+!/scripts/**/*
+
+# Add container builds
+!/build
+!/build/**
+!/build/**/*
+
+# Add deploy directory
+!/deploy
+!/deploy/**
+!/deploy/**/*
+
+# Ignore cache generated
+/**/__pycache__
+
