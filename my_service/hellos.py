@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Hello world package"""
-from flask import Flask, abort, Blueprint
+from flask import abort, Blueprint
 
 
 class _:
@@ -23,7 +23,9 @@ class _:
 hellos_bp = Blueprint("hellos", __name__)
 
 
-class hellos:
+class Hellos:
+    """Operations on the resource /hellos"""
+
     def __init__(self):
         self.context = {
             _.RES_HELLOS: {},
@@ -41,7 +43,7 @@ class hellos:
         if not name in self.context[_.RES_HELLOS]:
             abort(404)
         response = {
-            "message": "Hello {}".format(name),
+            "message": f"Hello {name}",
         }
         return response, 200
 
@@ -63,7 +65,7 @@ class hellos:
             name (str) the key to be deleted.
         """
         if not name in self.context[_.RES_HELLOS]:
-            abort(404, description="name={} not found".format(name))
+            abort(404, description=f"name={name} not found")
         response = None
         return response, 204
 
@@ -77,9 +79,9 @@ class hellos:
             A json with "message" equals to "Hello <name>".
         """
         if name in self.context[_.RES_HELLOS]:
-            abort(409, description="name={} already exists".format(name))
+            abort(409, description=f"name={name} already exists")
         self.context[_.RES_HELLOS][name] = 1
         response = {
-            "message": "Hello {}".format(name),
+            "message": f"Hello {name}",
         }
         return response, 201
