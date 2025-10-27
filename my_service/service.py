@@ -3,11 +3,19 @@
 from flask import Flask
 from .hellos import bp as hellos_bp
 
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
+from prometheus_client import make_wsgi_app
+
 VERSION = "v1"
 SERVICE_NAME = "service"
 PREFIX = "/api/" + SERVICE_NAME + "/" + VERSION
 
 app = Flask(__name__)
+
+# https://prometheus.github.io/client_python/exporting/http/flask/
+# Add prometheus wsgi middleware to route /metrics requests
+app.wsgi_app = DispatcherMiddleware(app.wsgi_app, {"/metrics": make_wsgi_app()})
+
 app.register_blueprint(hellos_bp, url_prefix=PREFIX)
 
 
