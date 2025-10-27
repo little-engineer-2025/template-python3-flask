@@ -2,6 +2,7 @@
 """Hello world package"""
 from flask import Flask
 from .hellos import bp as hellos_bp
+from .metrics import generate_metrics
 
 VERSION = "v1"
 SERVICE_NAME = "service"
@@ -48,3 +49,9 @@ def healthz():
     if is_live:
         return "Ok", 200
     return "Not alive", 500
+
+
+@app.route("/metrics", methods=["GET"])
+def prometheus():
+    """TODO Add prometheus handler to return metrics."""
+    return generate_metrics()

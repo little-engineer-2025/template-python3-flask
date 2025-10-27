@@ -15,6 +15,9 @@ Functions
 `not_found(error)`
 :   Default 404 error handler
 
+`prometheus()`
+:   TODO Add prometheus handler to return metrics.
+
 `readyz()`
 :   Service readiness
     
